@@ -15,3 +15,7 @@ Future developments involve the population of the director section and the pages
 Now feel free to navigate and do not hesitate to ask for other details at: quintavalle.christian@gmail.com
 
 It can be freely accessed at this address: http://www.rankyourworld.it/movies/#/
+
+If you don't want to sign in, I provide you with these credentials:
+username: ospite@quintavallechristian.it
+password: ospite2016
