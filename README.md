@@ -1,3 +1,5 @@
+<h2>DISCLAIMER</h2>
+
 This website is a work-in-progress personal project developed during the university.
 
 Its main language is Italian and only this disclaimer is written in English, in order to help all the visitors understand the purpouse and the structure of the website.
