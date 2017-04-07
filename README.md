@@ -11,11 +11,13 @@ At the moment I have three navigable sections: the home page, giving a brief ove
 At the moment all the data presented is retrieved by my own imdb watchlist. The objective is to allow every user to upload his own list and, after that, to update his watchlist both by directly acting on the website or by uploading again the imdb list.
   
 Future developments involve the population of the director section and the pages dedicated to the single movies and actors, together with posters and actors images.
-  
-Now feel free to navigate and do not hesitate to ask for other details at: quintavalle.christian@gmail.com
 
 It can be freely accessed at this address: http://www.rankyourworld.it/movies/#/
 
 If you don't want to sign in, I provide you with these credentials:
 username: ospite@quintavallechristian.it
 password: ospite2016
+  
+Now feel free to navigate and do not hesitate to ask for other details at: quintavalle.christian@gmail.com
+
+
