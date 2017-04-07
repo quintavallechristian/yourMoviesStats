@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>YOURMov!estats</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, intial-scale=1">
+    <link rel="stylesheet" href="css/angular-chart.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	
+	
+	
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400' rel='stylesheet' type='text/css'>
+    <script src="js/includes/angular.min.js"></script>
+    <script src="js/includes/angular-route.min.js"></script>
+    <script src="js/includes/heartcode-canvasloader-min.js"></script>
+    <script src="js/includes/sha512.js" type="text/javascript"></script>
+    <script src="js/includes/chart.min.js"></script>
+    <script src="js/includes/angular-chart.min.js" type="text/javascript"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
+    <script src="js/drag-drop.js"></script>
+    <script src="js/functions.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	<!-- Angular Material Library -->
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/directives/header.js"></script>
+    <script src="js/directives/scroll-directive.js"></script>
+    <script src="js/directives/scroll-onClick-directive.js"></script>
+    <script src="js/controllers/action-button-controller.js"></script>
+    <script src="js/controllers/check-login-controller.js"></script>
+    <script src="js/controllers/confirm-controller.js"></script>
+    <script src="js/controllers/confirm-message-controller.js"></script>
+    <script src="js/controllers/home-chart-controller.js"></script>
+    <script src="js/controllers/home-stats-controller.js"></script>
+    <script src="js/controllers/actors-stats-controller.js"></script>
+    <script src="js/controllers/films-stats-controller.js"></script>
+    <script src="js/controllers/login-controller.js"></script>
+    <script src="js/controllers/popup-filters-controller.js"></script>
+    <script src="js/controllers/popup-controller.js"></script>
+    <script src="js/controllers/register-controller.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/services/api.js"></script>
+    <script src="js/services/login.js"></script>
+    <script src="js/services/logout.js"></script>
+    <script src="js/services/register.js"></script>
+    
+</head>
+<body class="ng-cloak textDarkGrey no-select default bgPrimaryH50" scroll ng-app="yourMovieStats" ng-controller="checkLoginController as checkLoginCtrl" ng-init="checkLoginCtrl.isLogged()">
+    <div id="headerContainer" class="container-fluid nopadding roboto bgPrimary" ng-class="{bgBlackTransparent: !checkLoginCtrl.isLogged()}">
+		<header class="container-fluid nopadding textWhite" id="header">
+            <div class="row nopadding" id="sup">
+                <div id="hamburger" class="col-sm-1 col-xs-1 col-sm-offset-1 col-xs-offset-1 hidden-md hidden-lg hidden-xl"></div>
+                <div class="col-sm-8 col-xs-8 col-md-3 col-lg-3" id="logo"><h1><span id="h1a">YOUR</span><span id="h1b">Mov!e</span><span id="h1c">stats</span></h1></div>
+                <div  class="hidden-sm hidden-xs col-md-6 col-lg-6" id="searchContainer">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Cerca attori, film o registi" aria-describedby="basic-addon1">
+						<span class="input-group-addon glyphicon glyphicon-search" id="basic-addon1" style="top:0;"></span>
+					</div>
+                </div>
+                <div class="hidden-sm hidden-xs col-md-3 col-md-3" id="profile" ng-controller="ModalDemoCtrl as abCtrl">
+                    <a id="btn-register" class="col-md-6 text-center decoNone clickable textWhite" ng-hide="checkLoginCtrl.isLogged()" ng-click="abCtrl.open('register')">Registrati</a>
+                    <a id="btn-login" class="col-md-6 text-center decoNone clickable textWhite" ng-hide="checkLoginCtrl.isLogged()" ng-click="abCtrl.open('login')">Accedi</a>
+                    <a id="username-nav" class="col-md-8 text-center decoNone clickable textWhite" ng-show="checkLoginCtrl.isLogged()" ng-mouseenter="abCtrl.setClicked(true)" ng-mouseleave="abCtrl.setClicked(false)">{{checkLoginCtrl.data.name}}</a>
+                    <div id="avatar-nav" class="col-md-4 text-center decoNone clickable textWhite" ng-show="checkLoginCtrl.isLogged()" ng-mouseenter="abCtrl.setClicked(true)" ng-mouseleave="abCtrl.setClicked(false)">
+                        <div id="image-nav" class="circle staticCircle-little" ng-style="{'background-image': 'url(img/avatars/' + checkLoginCtrl.data.image +')'}" ></div>
+                        <div id="profile-triangle" ng-show="abCtrl.profileClicked">
+                        </div>
+                        <div id="profile-popup" ng-show="abCtrl.profileClicked" ng-controller="PopupController as popCtrl">
+                            <div >
+                                <a href="#/profile" class="decoNone clickable text-left textDarkGrey">Modifica Profilo</a>
+                                <a class="decoNone clickable text-left textDarkGrey">Carica la tua watchlist</a>
+                                <a class="decoNone clickable text-left textDarkGrey" id="logout" ng-click="popCtrl.logout()">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="search" class="glyphicon glyphicon-search col-sm-1 col-xs-1 hidden-md hidden-lg hidden-xl"></div>
+            </div>
+        </header>
+        <nav class="container-fluid nopadding clickable borderIndigo" ng-class="{'transparent default': !checkLoginCtrl.isLogged()}">
+            <a href="#/home" class="col-xs-3 text-center textWhite pt1 decoNone" ng-class="{'active': (path == '/home') || (path == '/') }" id="home">HOME</a>
+            <a href="#/actors" class="col-xs-3 text-center textWhite pt1 decoNone" ng-class="{'active': path == '/actors' }" id="actors">ATTORI</a>
+            <a href="#/directors" class="col-xs-3 text-center textWhite pt1 decoNone" ng-class="{'active': path == '/directiors' }" id="directors">REGISTI</a>
+            <a href="#/films" class="col-xs-3 text-center textWhite pt1 decoNone" ng-class="{'active': path == '/films' }" id="films">FILM</a>
+        </nav>
+    </div>
+    <div class="containerfluid nopadding onlyvisible bgPrimaryH50">
+        <div id="welcome" class="row clearfix nopadding text-center background backgroundWelcome textWhite" ng-show="checkLoginCtrl.isInitialized() && !checkLoginCtrl.isLogged()"><div id = "welcome-content">RENDI MEMORABILI I TUOI FILM</div></div>
+       <div id="sub-container" class="row clearfix nopadding" ng-show="checkLoginCtrl.isLogged()">
+           <div ng-view></div>
+       </div>
+    </div>
+	<div class="row footerHeight nopadding bgPrimaryH50" ng-show="checkLoginCtrl.isLogged()">
+		<div class="col-md-6"></div>
+		<div class="col-md-6 text-right">Christan Quintavalle 2016</div>
+	</div>
+</body>
+</html>

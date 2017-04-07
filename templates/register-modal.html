@@ -1,0 +1,72 @@
+<div class="modal-content" ng-show="registerCtrl.regStatus.error != 0">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="registerCtrl.cancel()">&times;</button>
+		<div class="text-center textPinkish modal-title">{{registerCtrl.regStatus.message}}</div>
+	</div>
+	<div class="modal-body modalPadding">
+		<div>
+			<form name = "registerForm" id = "register-fields" ng-submit="registerForm.$valid && (registerCtrl.userData.password == registerCtrl.userData.password2) && registerCtrl.addUserData()" novalidate>
+				<div 	class="form-group has-feedback" ng-class="{'has-error': registerForm.name.$dirty && !registerForm.name.$valid, 'has-success': registerForm.name.$valid}">
+					<input type="text" name="name" placeholder="Nome" class="form-control" ng-model="registerCtrl.userData.name" required minlength="2" ng-model-options="{ updateOn: 'mousedown blur' }" ng-pattern="/^[a-z|A-Z]+$/">
+					<span 	class="glyphicon form-control-feedback" aria-hidden="true"
+							ng-class="{'glyphicon-remove': registerForm.name.$dirty && !registerForm.name.$valid, 'glyphicon-ok': registerForm.name.$valid}" ></span>
+					<div class="textPinkish errorMessage" ng-show="registerForm.name.$dirty && registerForm.name.$error.required">Richiesto</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.name.$dirty && registerForm.name.$error.minlength">Il nome deve essere lungo almeno 2 caratteri</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.name.$dirty && registerForm.name.$error.pattern">Non puoi inserire numeri o simboli</div>
+				</div>
+				<div 	class="form-group has-feedback" 
+						ng-class="{'has-error': registerForm.name.$dirty && !registerForm.surname.$valid, 'has-success': registerForm.surname.$valid}">
+					<input type="text" name="surname" placeholder="Cognome" class="form-control" ng-model="registerCtrl.userData.surname" required minlength="2" ng-model-options="{ updateOn: 'mousedown blur' }" ng-pattern="/^[a-z|A-Z]+$/">
+					<span 	class="glyphicon form-control-feedback" aria-hidden="true"
+							ng-class="{'glyphicon-remove': registerForm.surname.$dirty && !registerForm.surname.$valid, 'glyphicon-ok': registerForm.surname.$valid}" ></span>
+					<div class="textPinkish errorMessage" ng-show="registerForm.surname.$dirty && registerForm.surname.$error.required">Richiesto</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.surname.$dirty && registerForm.surname.$error.minlength">Il cognome deve essere lungo almeno 2 caratteri</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.surname.$dirty && registerForm.surname.$error.pattern">Non puoi inserire numeri o simboli</div>
+				</div>
+				<div 	class="form-group has-feedback" 
+						ng-class="{'has-error': registerForm.email.$dirty && !registerForm.email.$valid, 'has-success': registerForm.email.$valid}">
+					<input type="email" name="email" placeholder="Indirizzo Email" class="form-control" ng-model="registerCtrl.userData.email" ng-model-options="{ updateOn: 'mousedown blur' }" required>
+					<span 	class="glyphicon form-control-feedback" aria-hidden="true"
+							ng-class="{'glyphicon-remove': registerForm.email.$dirty && !registerForm.email.$valid, 'glyphicon-ok': registerForm.email.$valid}" ></span>
+					<div class="textPinkish errorMessage" ng-show="registerForm.email.$dirty && registerForm.email.$error.required">Richiesto</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.email.$dirty && registerForm.email.$error.email">Inserisci una email valida</div>
+				</div>
+				<div 	class="form-group has-feedback" 
+						ng-class="{'has-error': registerForm.password.$dirty && !registerForm.password.$valid, 'has-success': registerForm.password.$valid}">
+					<input type="password" name="password" placeholder="Password" class="form-control" ng-model="registerCtrl.userData.password" ng-model-options="{ updateOn: 'mousedown blur' }" required minlength="8">
+					<span 	class="glyphicon form-control-feedback" aria-hidden="true"
+							ng-class="{'glyphicon-remove': registerForm.password.$dirty && !registerForm.password.$valid, 'glyphicon-ok': registerForm.password.$valid}" ></span>
+					<div class="textPinkish errorMessage" ng-show="registerForm.password.$dirty && registerForm.password.$error.required">Richiesto</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.password.$dirty && registerForm.password.$error.minlength">La password deve essere lunga almeno 8 caratteri</div>
+				</div>
+				<div 	class="form-group has-feedback" 
+						ng-class="{'has-error': registerForm.password2.$dirty && !registerForm.password2.$valid || (registerCtrl.userData.password != registerCtrl.userData.password2), 'has-success': registerForm.password2.$valid && (registerCtrl.userData.password == registerCtrl.userData.password2)}">
+					<input type="password" name="password2" placeholder="Ripeti Password" class="form-control" ng-model="registerCtrl.userData.password2" ng-model-options="{ updateOn: 'mousedown blur' }" required minlength="8">
+					<span 	class="glyphicon form-control-feedback" aria-hidden="true"
+							ng-class="{'glyphicon-remove': registerForm.password2.$dirty && !registerForm.password2.$valid || (registerCtrl.userData.password != registerCtrl.userData.password2), 'glyphicon-ok': registerForm.password2.$valid && (registerCtrl.userData.password == registerCtrl.userData.password2)}" ></span>
+					<div class="textPinkish errorMessage" ng-show="registerForm.password2.$dirty && registerForm.password2.$error.required">Richiesto</div>
+					<div class="textPinkish errorMessage" ng-show="registerForm.password2.$dirty && (registerCtrl.userData.password != registerCtrl.userData.password2)">Le due password devono coincidere</div>
+				</div>
+				<div class="informative text-center textDarkGrey">
+					registeristrandoti confermi di accettare i Termini del Servizio e l'Informativa sulla Privacy di YOURMov!eStats.
+				</div>
+				<input type="submit" value="Registrati" class="btn btn-default fullWidth" id="register-btn" />
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal-content background backgroundSucc textWhite" ng-hide="registerCtrl.regStatus.error != 0" >
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="registerCtrl.cancel()">&times;</button>
+	</div>
+	<div class="modal-body text-center modalHeight">
+		<h2 class="row text-center modal-title">Grande! Sei dei nostri!</h2>
+		<div class="row register-successful-message pt2">			
+			<strong class="textLightGray">Ti abbiamo inviato una mail di conferma. Vai a controllare!</strong>
+		</div>
+	</div>
+	<div class="modal-footer textPinkish">
+		<button  class="btn btn-default fullWidth">Torna alla home</button>
+		<div class="pt2"><strong><a class="decoNone clickable textPinkish">Non ho ricevuto la mail</a><strong></div>
+	</div>
+</div>

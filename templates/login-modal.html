@@ -1,0 +1,15 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" ng-click="loginCtrl.cancel()">&times;</button>
+	<div class="text-center textPinkish modal-title">{{loginCtrl.signStatus.message}}</div>
+</div>
+<div class="modal-body modalPadding">
+	<form name = "loginForm" id = "register-fields" ng-submit="loginCtrl.signUser()" novalidate>
+		<div class="form-group">
+			<input type="text" name="email" placeholder="Email" class="form-control" ng-model="loginCtrl.userData.email" required>
+		</div>
+		<div class="form-group">
+			<input type="password" name="password" placeholder="Password" class="form-control" ng-model="loginCtrl.userData.password" required>
+		</div>
+		<input type="submit" value="Login" class="btn btn-default fullWidth" id="login-btn" />
+	</form>
+</div>

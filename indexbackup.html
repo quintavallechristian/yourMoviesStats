@@ -1,0 +1,158 @@
+<html>
+<head>
+	<title>YOURMov!estats</title>
+	<meta name="viewport" content="width=device-width, intial-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<!--<link rel="stylesheet" href="css/grid.css">-->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400italic,700italic,700,400' rel='stylesheet' type='text/css'>
+	<style type="text/css"></style>
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/chart/Chart.js"></script>
+	<script src="js/sha512.js" type="text/javascript"></script>
+	<script src="js/getUrl.js" type="text/javascript"></script>
+	<script src="js/heartcode-canvasloader-min.js"></script>
+	<script src="js/drag-drop.js"></script>
+	<script src="js/events.js"></script>
+	<script src="js/functions.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<header class="row clearfix" id="header">
+			<div class="row clearfix" id="sup">
+				<div class="column" id="hamburger"><img src="img/hamburger.png"/></div>
+				<div class="column" id="logo"><h1><span id="h1a">YOUR</span><span id="h1b">Mov!e</span><span id="h1c">stats</span></h1></div>
+				<div class="column" id="searchIcon"><img src="img/search.png"/></div>
+				<div class="column" id="searchContainer">
+					<input type="text" name="find" placeholder="Cerca sul sito..." class="searchbox">
+				</div>
+				<div class="column" id="profile">
+					<button id="btn-register" class="btn-nav">Registrati</button>
+					<button id="btn-login" class="btn-nav">Accedi</button>
+					<button id="username-nav" class="btn-nav">Username</button>
+					<div id="avatar-nav">
+						<div id="image-nav"></div>
+					</div>
+					<div id="profile-triangle">
+					</div>
+					<div id="profile-popup">
+						<button>Modifica Profilo</button>
+						<button>Carica la tua watchlist</button>
+						<button id="logout">Logout</button>
+					</div>
+				</div>
+				
+			</div>
+			<nav class="row clearfix">
+				<button class="column quarter" id="home"><p>HOME</p></button>
+				<button class="column quarter" id="actors"><p>ATTORI</p></button>
+				<button class="column quarter" id="directors"><p>REGISTI</p></button>
+				<button class="column quarter" id="films"><p>FILM</p></button>
+			</nav>
+		</header>
+		
+		<div id="welcome" class="row clearfix"><div id = "welcome-content">RENDI MEMORABILI I TUOI FILM</div></div>
+		
+		<div id="sub-container" class="row clearfix">
+			<div class="column half first-half">d</div>
+			<div class="column half second-half">
+				<div class="column">
+					<div class="row clearfix" id="subtitle">
+						<div class="column half"><h3 id="first-col-title"></h3></div>
+						<div class="column half"><h3 id="second-col-title"></h3></div>
+					</div>
+					<div class="row clearfix">
+						<div class="column half" id="first-col">
+							<div id="first-col-subtitle" class="subtitle"></div>
+							<div id="first-col-content">
+								<table class='the-table' id="home-table">
+									<tr><td><strong>Film visti</strong></td><td id='film_watched'></td></tr>
+									<tr><td><strong>Minuti guardati</strong></td><td id='minute_watched'></td></tr>
+									<tr><td><strong>Ultimo film registrato</strong></td><td id='last_seen'></td></tr>
+									<tr><td><strong>Data ultimo film registrato</strong></td><td id='last_seen_date'></td></tr>
+								</table>
+							</div>
+						</div>
+						<div class="column half" id="second-col">
+							<div id="second-col-subtitle" class="subtitle"></div>
+							<div id="second-col-content"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!--Popup for registration and login-->
+<div class = "modal-table" id="modal-table">
+	<div class="container-modal" id="container-modal">
+		<!--Registration content-->
+		<div class="content-modal" id="register-modal">
+			<div id ="register-message">
+			</div>
+			<div id = "register-fields">
+				<div>
+					<input type="text" id="name" placeholder="Nome" class="input-modal">
+				</div>
+				<div>
+					<input type="text" id="surname" placeholder="Cognome" class="input-modal">
+				</div>
+				<div>
+					<input type="text" id="mail" placeholder="Indirizzo Email" class="input-modal">
+				</div>
+				<div>
+					<input type="password" id="password" placeholder="Password" class="input-modal">
+				</div>
+				<div>
+					<input type="password" id="passwordConfirmation" placeholder="Ripeti Password" class="input-modal">
+				</div>
+				<div class="informative">
+					Registrandoti confermi di accettare i Termini del Servizio e l'Informativa sulla Privacy di YOURMov!eStats.
+				</div>
+				<button class="btn-modal" id="register-btn">
+					Registrati
+				</button>
+			</div>
+		</div>
+		<!--Loading wheel-->
+		<div id="canvasloader-container" class="wrapper"></div>
+		<!--Registration successful-->
+		<div  class="content-modal" id="register-successful">
+			<!--Finish update-->
+			<div class="final-message-container">
+				<div class="register-successful-title">
+					Grande! Sei dei nostri!
+				</div>
+				<div class="register-successful-message">			
+					Ti abbiamo inviato una mail di conferma.<br/>Vai a controllare!
+				</div>
+				<div id="btn-new-mail"><div class="btn-modal">Torna alla home</div></div>
+				<div class="change-later register-again">Registrati nuovamente</div>
+				<div id="email-not-received">Non ho ricevuto la mail</div>
+			</div>
+		</div>
+		<!--Login content-->
+		<div class="content-modal" id="login-modal">
+			<div id ="login-message">
+			</div>
+			<div id = "login-fields">
+				<div>
+					<input type="text" id="login-email-or-username" placeholder="Inserisci l'email o l'username" class="input-modal">
+				</div>
+				<div>
+					<input type="password" id="login-password" placeholder="Password" class="input-modal">
+				</div>
+				<button class="btn-modal" id="login-btn">
+					Login
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

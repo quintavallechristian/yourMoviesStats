@@ -1,0 +1,148 @@
+<div class="container-fluid nopadding roboto textDarkGrey">
+	<div id="first-row" class="row nopadding passHeader sm-pxRowHeight6">
+		<div class="col-sm-12">
+			<div class="row sm-percRowHeight10">
+				<div class="fadingInRight undisplayed col-sm-5 pt5">
+					<div class="row sm-percRowHeight12" id="chart">
+						<div class="col-sm-12 sm-percRowHeight12">
+							<div>
+								<canvas ng-show="fsCtrl.getOrderingField('movie_personal_vote')" id="bar" class="clickable chart chart-bar sm-percRowHeight11" chart-colours= "fsCtrl.chartData.colours" chart-data="fsCtrl.chartData.dataset" chart-labels="fsCtrl.chartData.labels" chart-click="fsCtrl.chartClick" chart-options="fsCtrl.chartData.options" >
+								</canvas>
+								<canvas ng-show="fsCtrl.getOrderingField('movie_year')" id="line" class="clickable chart chart-line sm-percRowHeight11" chart-colours= "fsCtrl.chartData.colours" chart-data="fsCtrl.chartData.dataset" chart-labels="fsCtrl.chartData.labels" chart-click="fsCtrl.chartClick" chart-options="fsCtrl.chartData.options" >
+								</canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-1 sm-percRowHeight12 pt4">
+					 <md-slider-container flex class="sm-percRowHeight12">
+						  <md-input-container class="sm-percRowHeight2">
+							<h3 class="textAccent">TOP</h3>
+							<input flex type="number" ng-model="fsCtrl.limit" aria-label="bass" aria-controls="bass-slider">
+						  </md-input-container>
+						  <md-slider md-discrete ng-model="fsCtrl.limit" ng-change="fsCtrl.prova()" min="0" max="100" step="5" aria-label="bass" class="md-accent sm-percRowHeight8"
+									 md-vertical></md-slider>
+						  </md-slider>
+					</md-slider-container>
+				</div>
+				<div class="col-sm-6 sm-percRowHeight12 pt5">
+					<div class="row nopadding">						
+						<div class="col-sm-11 bgWhite tile sm-percRowHeight12 nopadding">
+							<md-button class="back-fab md-fab" ng-show="fsCtrl.areFiltersChanged()" ng-click="fsCtrl.resetFilters()">
+								<div class="glyphicon glyphicon-menu-left textWhite"></div>
+							</md-button>
+							<md-toolbar layout="row" class="md-primary shadow">
+							  <div class="md-toolbar-tools">
+								<div class="col-sm-5">Ordina per</div>
+								<div class="text-center col-sm-2 text-smaller" ng-class="{active:fsCtrl.getOrderingField('movie_year')}" ng-click="fsCtrl.setOrderingField('movie_year')">
+									Anno
+									<div ng-show="fsCtrl.getOrderingField('-movie_year')" class="text-xsmall glyphicon glyphicon-menu-down"></div>
+									<div ng-show="fsCtrl.getOrderingField('+movie_year')" class="text-xsmall glyphicon glyphicon-menu-up"></div>
+								</div>
+								<div class="text-center col-sm-3 text-smaller" ng-class="{active:fsCtrl.getOrderingField('movie_imdb_vote')}" ng-click="fsCtrl.setOrderingField('movie_imdb_vote')">
+									Voto IMDB
+									<div ng-show="fsCtrl.getOrderingField('-movie_imdb_vote')" class="text-xsmall glyphicon glyphicon-menu-down"></div>
+									<div ng-show="fsCtrl.getOrderingField('+movie_imdb_vote')" class="text-xsmall glyphicon glyphicon-menu-up"></div>
+								</div>
+								<div class="text-center col-sm-2 text-smaller" ng-class="{active:fsCtrl.getOrderingField('movie_personal_vote')}" ng-click="fsCtrl.setOrderingField('movie_personal_vote')">
+									Voto
+									<div ng-show="fsCtrl.getOrderingField('-movie_personal_vote')" class="text-xsmall glyphicon glyphicon-menu-down"></div>
+									<div ng-show="fsCtrl.getOrderingField('+movie_personal_vote')" class="text-xsmall glyphicon glyphicon-menu-up"></div>
+								</div>
+							  </div>
+							</md-toolbar>
+							<div class="table-responsive textDarkGrey sm-percRowHeight8">
+								<div class="col-sm-12 text-center pt1"  ng-hide="fsCtrl.finished">
+									<md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>						
+								</div>
+									<md-list flex>
+										<md-list-item class="sm-percRowHeight2 md-3-line animate-repeat" ng-repeat="movie in fsCtrl.data.displayedMovies | filter: fsCtrl.filters(fsCtrl.lowerBound, fsCtrl.higherBound, fsCtrl.beginInterval, fsCtrl.endInterval) | filter:query | orderBy: [fsCtrl.orderingField, '-movie_personal_vote', '-movie_imdb_vote', '-movie_year'] | limitTo:fsCtrl.limit" ng-click="null">
+										  <img ng-src="{{todos[1].face}}?50" class="md-avatar" alt="{{todos[1].who}}" />
+										  <div class="md-list-item-text pl2" layout="column">
+											<div class="row">
+												<h3>{{ movie.movie_title }}</h3>
+												<h4>{{ movie.movie_year }}</h4>
+											</div>
+											<div class="row textAccent">
+												<div class="col-sm-4 star-container nopadding">
+													<span ng-repeat="star in fsCtrl.range(1,10)" ng-class="{'glyphicon glyphicon-star': star <= movie.movie_personal_vote, 'glyphicon glyphicon-star-empty': star > movie.movie_personal_vote}" class="textAccent"></span>
+												</div>
+												<div class="col-sm-1 nopadding">
+													<i>{{movie.movie_personal_vote}}</i>
+												</div>
+											</div>
+										  </div>
+										</md-list-item>
+									</md-list>
+							</div>
+							<div class="row noscroll pl2">
+								<div class="col-sm-11 textDarkGrey sm-percRowHeight2">
+									<md-content>
+											<md-input-container class="md-block md-accent">
+												<label>Cerca</label>
+												<input ng-model="query">
+											</md-input-container>
+									</md-content>
+								</div>
+								<!--<div class=" col-sm-1 pt2">
+									<div ng-click="fsCtrl.showFilters()" class="glyphicon glyphicon-filter text-small icon clickable"></div>
+								</div>-->
+							</div>
+							<md-button class="filter-fab md-fab" ng-click="fsCtrl.showFilters()">
+								<div class="glyphicon glyphicon-filter textWhite"></div>
+							</md-button>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<md-sidenav class="md-sidenav-right md-whiteframe-4dp passHeader" md-component-id="right">
+  <md-toolbar class="md-theme-light">
+	<h1 class="md-toolbar-tools">Filtra</h1>
+  </md-toolbar>
+	<md-content layout-padding>
+		<label class="col-sm-12" for="testInput">Seleziona periodo</label>
+		<md-input-container class="col-sm-6">
+			<label for="testInput">Dal</label>
+			<md-select ng-model="fsCtrl.pickedBegin">
+				<md-option ng-repeat="dal in fsCtrl.range(2016,1800)">{{dal}}</md-option>
+			</md-select>
+		</md-input-container>
+		<md-input-container class="col-sm-6">
+			<label for="testInput">Al</label>
+			<md-select ng-model="fsCtrl.pickedEnd">
+				<md-option ng-repeat="al in fsCtrl.range(2016,1800)">{{al}}</md-option>
+			</md-select>
+		</md-input-container>
+			
+		<label class="col-sm-12" for="testInput">Seleziona generi</label>
+		<md-input-container class="col-sm-12">
+        <label>Filtra Generi</label>
+        <md-select ng-model="fsCtrl.pickedGenres" multiple>
+          <md-optgroup label="generi">
+            <md-option ng-value="genre" ng-repeat="genre in fsCtrl.genres">{{genre | translate:'it'}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+	  
+		<label class="col-sm-12" for="testInput">Seleziona voti</label>
+		<md-input-container class="col-sm-6">
+			<label for="testInput">Da</label>
+			<md-select ng-model="fsCtrl.pickedLower">
+				<md-option ng-repeat="da in fsCtrl.range(10,0)">{{da}}</md-option>
+			</md-select>
+		</md-input-container>
+		<md-input-container class="col-sm-6">
+			<label for="testInput">A</label>
+			<md-select ng-model="fsCtrl.pickedHigher">
+				<md-option ng-repeat="a in fsCtrl.range(10,0)">{{a}}</md-option>
+			</md-select>
+		</md-input-container>
+		
+		<md-button ng-click="fsCtrl.applyFilters(fsCtrl.pickedLower, fsCtrl.pickedHigher, fsCtrl.pickedBegin, fsCtrl.pickedEnd, fsCtrl.pickedGenres)" class="md-primary">Applica</md-button>
+	
+	</md-content>
+</md-sidenav>

@@ -1,0 +1,37 @@
+<div id="headerContainer" class="container-fluid nopadding roboto" ng-class="{bgBlackTransparent: !checkLoginCtrl.isLogged()}">
+	<header class="container-fluid nopadding" id="header">
+		<div class="row nopadding" id="sup">
+			<div id="hamburger" class="col-sm-1 col-xs-1 col-sm-offset-1 col-xs-offset-1 hidden-md hidden-lg hidden-xl"></div>
+			<div class="col-sm-8 col-xs-8 col-md-3 col-lg-3" id="logo"><h1><span id="h1a">YOUR</span><span id="h1b">Mov!e</span><span id="h1c">stats</span></h1></div>
+			<div  class="hidden-sm hidden-xs col-md-6 col-lg-6" id="searchContainer">
+				<input class="form-control"  type="text" name="find" placeholder="Cerca sul sito..." class="searchbox">
+			</div>
+			<div class="hidden-sm hidden-xs col-md-3 col-md-3" id="profile" ng-controller="ModalDemoCtrl as abCtrl">
+				<a id="btn-register" class="col-md-6 text-center decoNone clickable textWhite" ng-hide="checkLoginCtrl.isLogged()" ng-click="abCtrl.open('register')">Registrati</a>
+				<a id="btn-login" class="col-md-6 text-center decoNone clickable textWhite" ng-hide="checkLoginCtrl.isLogged()" ng-click="abCtrl.open('login')">Accedi</a>
+				<a id="username-nav" class="col-md-8 text-center decoNone clickable textWhite" ng-show="checkLoginCtrl.isLogged()" ng-mouseenter="abCtrl.setClicked(true)" ng-mouseleave="abCtrl.setClicked(false)">{{checkLoginCtrl.data.name}}</a>
+				<div id="avatar-nav" class="col-md-4 text-center decoNone clickable textWhite" ng-show="checkLoginCtrl.isLogged()" ng-mouseenter="abCtrl.setClicked(true)" ng-mouseleave="abCtrl.setClicked(false)">
+					<!--<div id="image-nav" ng-style="{'background-image': 'url(img/avatars/' + checkLoginCtrl.data.image +')'}" ></div>-->
+					<div id="image-nav" ng-style="{'background-image': 'url(img/avatars/IMG_1539.jpg)'}" ></div>
+					<div id="profile-triangle" ng-show="abCtrl.profileClicked">
+					</div>
+					<div id="profile-popup" ng-show="abCtrl.profileClicked">
+						<div >
+							<a class="decoNone clickable text-left">Modifica Profilo</a>
+							<a class="decoNone clickable text-left">Carica la tua watchlist</a>
+							<a class="decoNone clickable text-left" id="logout">Logout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="search" class="glyphicon glyphicon-search col-sm-1 col-xs-1 hidden-md hidden-lg hidden-xl"></div>
+		</div>
+	</header>
+	<nav class="container-fluid nopadding clickable" ng-class="{'transparent default': !checkLoginCtrl.isLogged()}">
+		<a class="col-md-3 text-center textWhite pt1 decoNone active" id="home">HOME</a>
+		<a class="col-md-3 text-center textWhite pt1 decoNone" id="actors">ATTORI</a>
+		<a class="col-md-3 text-center textWhite pt1 decoNone" id="directors">REGISTI</a>
+		<a class="col-md-3 text-center textWhite pt1 decoNone" id="films">FILM</a>
+	</nav>
+</div>

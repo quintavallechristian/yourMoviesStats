@@ -1,0 +1,375 @@
+<div class="container-fluid nopadding roboto">
+	<div id="first-row" class="row nopadding passHeader bgPrimary sm-pxRowHeight6 textWhite">
+		<div class="col-sm-12 sm-pxRowHeight6">
+			<div class="row pt2 sm-percRowHeight6 backgroundHome">
+				<div class="col-sm-4 text-center">
+					<div class="row sm-percRowHeight9">
+						<div class="circle avatarCircle" id='minute_watched'><img src="img/avatars/{{checkLoginCtrl.data.image}}" alt="user"/>{{hsCtrl.data.minutes}}</div>
+					</div>
+					<div class="row sm-percRowHeight2">
+						<h2>{{checkLoginCtrl.data.name}} {{checkLoginCtrl.data.surname}}</h2>
+					</div>
+				</div>
+				<div class="col-sm-8">
+					<div class="row sm-percRowHeight4">
+						<div class="col-sm-12 nopadding pt5 ">
+						<h2>I TUOI BADGE</h2>
+						</div>
+					</div>
+					<div class="row sm-percRowHeight8 hidden-xs">
+						<div class="col-sm-12">
+							<div class="row sm-percRowHeight12">
+								<div class="col-md-2 sm-percRowHeight11">
+									<div class="row sm-percRowHeight9">
+										<div class="circle staticCircle"><img src="img/vote-badge.png"/></div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										Serial Watcher
+									</div>
+								</div>
+								<div class="col-md-2 sm-percRowHeight11">
+									<div class="row sm-percRowHeight9">
+										<div class="circle staticCircle backgroundMovieBadge text-center"><img src="img/movie-badge.png"/></div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										Serial Watcher
+									</div>
+								</div>
+								<div class="col-md-2 sm-percRowHeight11">
+									<div class="row sm-percRowHeight9">
+										<div class="circle staticCircle bgPrimary text-center">Serial Watcher</div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										Serial Watcher
+									</div>
+								</div>
+								<div class="col-md-2 sm-percRowHeight11">
+									<div class="row sm-percRowHeight9">
+										<div class="circle staticCircle bgPrimary text-center">Serial Watcher</div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										Serial Watcher
+									</div>
+								</div>
+								<div class="col-md-2 sm-percRowHeight11">
+									<div class="row sm-percRowHeight9">
+										<div class="circle staticCircle bgPrimary text-center">Serial Watcher</div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										Serial Watcher
+									</div>
+								</div>
+								<div class="col-md-2 sm-percRowHeight11 tableCenterer"> <div class="vertical-centerer"><div class="glyphicon glyphicon-menu-right" style="font-size:60px;"></div></div></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row sm-percRowHeight5">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight9 ph1 textDarkgrey">
+								<div class="col-sm-12 text-center pt1 pb1 bgPrimaryH50 img-rounded tile">
+									<div class="row sm-percRowHeight8 xs-percRowHeight2">
+										<div id="summaryCarousel" class="carousel slide" data-ride="carousel">
+											<div class="carousel-inner sm-percRowHeight11">
+												<div class="item active">
+													<h5>FILM VISTI</h5>
+													<h1>{{hsCtrl.data.number}}</h1>
+												</div>
+												<div class="item">
+													<h5>MINUTI GUARDATI</h5>
+													<h1>{{hsCtrl.data.minutes}}</h1>
+												</div>
+												<div class="item">
+													<h5>GIORNI TRASCORSI</h5>
+													<h1>{{hsCtrl.data.minutes | minutesToTime}}</h1>
+												</div>
+											</div>
+											<ol class="carousel-indicators sm-percRowHeight1">
+												<li data-target="#summaryCarousel" data-slide-to="0" class="active"></li>
+												<li data-target="#summaryCarousel" data-slide-to="1"></li>
+												<li data-target="#summaryCarousel" data-slide-to="2"></li>
+											</ol>
+										</div>
+										
+									</div>
+									<div class="row sm-percRowHeight4">
+										<a scroll-on-click class="btn btn-default app1">APPROFONDISCI</a>
+										<!--<md-button scroll-on-click class="md-fab md-primary app1" aria-label="Eat cake" scroll-on-click>
+											<div class="glyphicon glyphicon-menu-down"></div>
+										</md-button>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight9 ph1 textDarkgrey">
+								<div class="col-sm-12 text-center pt1 pb1 bgPrimaryH50 img-rounded tile">
+									<div class="row sm-percRowHeight8 xs-percRowHeight2">
+										<div id="genreCarousel" class="carousel slide" data-ride="carousel">
+											<div class="carousel-inner sm-percRowHeight11">
+												<div class="item active">
+													<h5>GENERE PREFERITO</h5>
+													<h1>{{hsCtrl.genres.best_genre.name | translate: "it"}}</h1>
+												</div>
+												<div class="item">
+													<h5>GENERE PIU' ODIATO</h5>
+													<h1>{{hsCtrl.genres.worst_genre.name | translate: "it"}}</h1>
+												</div>
+												<div class="item">
+													<h5>GENERE PIU' VISTO</h5>
+													<h1>{{hsCtrl.genres.mostly_seen_genre.name | translate: "it"}}</h1>
+												</div>
+											</div>
+											<ol class="carousel-indicators sm-percRowHeight1">
+												<li data-target="#genreCarousel" data-slide-to="0" class="active"></li>
+												<li data-target="#genreCarousel" data-slide-to="1"></li>
+												<li data-target="#genreCarousel" data-slide-to="2"></li>
+											</ol>
+										</div>
+										
+									</div>
+									<div class="row sm-percRowHeight4">
+										<a class="btn btn-default">APPROFONDISCI</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight9 ph1 textDarkgrey">
+								<div class="col-sm-12 text-center pt1 pb1 bgPrimaryH50 img-rounded tile">
+									<div class="row sm-percRowHeight8 xs-percRowHeight2">
+										<div id="moviesCarousel" class="carousel slide" data-ride="carousel">
+											<div class="carousel-inner sm-percRowHeight11">
+												<div class="item active">
+													<h5>FILM PREFERITO</h5>
+													<h3>{{hsCtrl.movies.best_film.name}}</h3>
+												</div>
+												<div class="item">
+													<h5>FILM PIU' ODIATO</h5>
+													<h3>{{hsCtrl.movies.worst_film.name}}</h3>
+												</div>
+												<div class="item">
+													<h5>ULTIMO FILM VISTO</h5>
+													<h3>{{hsCtrl.movies.last_film.name}}</h3>
+												</div>
+											</div>
+											<ol class="carousel-indicators sm-percRowHeight1">
+												<li data-target="#moviesCarousel" data-slide-to="0" class="active"></li>
+												<li data-target="#moviesCarousel" data-slide-to="1"></li>
+												<li data-target="#moviesCarousel" data-slide-to="2"></li>
+											</ol>
+										</div>
+										
+									</div>
+									<div class="row sm-percRowHeight4">
+										<a class="btn btn-default" href="#/films">APPROFONDISCI</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight9 ph1 textDarkgrey">
+								<div class="col-sm-12 text-center pt1 pb1 bgPrimaryH50 img-rounded tile">
+									<div class="row sm-percRowHeight8 xs-percRowHeight2">
+										<div id="actorsCarousel" class="carousel slide" data-ride="carousel">
+											<div class="carousel-inner sm-percRowHeight11">
+												<div class="item active">
+													ATTORE PREFERITO
+													<h1>{{hsCtrl.actors.best_actor.name}}</h1>
+												</div>
+												<div class="item">
+													ATTORE PIU' ODIATO
+													<h1>{{hsCtrl.actors.worst_actor.name}}</h1>
+												</div>
+												<div class="item">
+													ATTORE PIU' RICORRENTE
+													<h1>{{hsCtrl.actors.mostly_seen_actor.name}}</h1>
+												</div>
+											</div>
+											<ol class="carousel-indicators sm-percRowHeight1">
+												<li data-target="#actorsCarousel" data-slide-to="0" class="active"></li>
+												<li data-target="#actorsCarousel" data-slide-to="1"></li>
+												<li data-target="#actorsCarousel" data-slide-to="2"></li>
+											</ol>
+										</div>
+										
+									</div>
+									<div class="row sm-percRowHeight4">
+										<a class="btn btn-default" href="#/actors">APPROFONDISCI</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="second-row" class="row sm-pxRowHeight6 textDarkGrey bgPrimaryH50 pb1">
+		<div class="col-sm-6" id="second-row-first-col">
+			<div class="row title row-title-top sm-percRowHeight2">
+				<div class="col-sm-12 pt2 responsiveTitle">IL TUO PASSATO</div>
+			</div>
+			<div class="row title row-title-top sm-percRowHeight1">
+				<div class="col-sm-12 text-center fading undisplayed"><h3>fino a...</h3></div>
+			</div>
+			<div class="row pt1 sm-percRowHeight7">
+				<div class="col-sm-12 sm-percRowHeight12 text-center">
+					<div class="row sm-percRowHeight12 backgroundClock rotating undisplayed">
+					</div>
+					<div class="row sm-percRowHeight12  backgroundCC fading undisplayed">
+					</div>
+					<div class="row sm-percRowHeight12  backgroundHH fading undisplayed"  ng-style="{'transform': 'rotate('+hsCtrl.getYears()*30+'deg)'}">
+					</div>
+					<div class="row sm-percRowHeight12  backgroundMH fading undisplayed"  ng-style="{'transform': 'rotate('+hsCtrl.getYears()*360+'deg)'}">
+					</div>
+					<div class="col-sm-12 sm-percRowHeight12 text-center tableCenterer fading undisplayed">
+						<div class="row vertical-centerer">
+							<div class="col-sm-12 pt5 pb5">
+								<div class="row">
+									<h1 class=" col-sm-5 col-xs-4 glyphicon glyphicon-menu-left text-right pt4 clickable" ng-click="hsCtrl.setYears(-1)" ng-class="{'not-visible':hsCtrl.getYears() == 1}"></h1>
+									<h1 class=" col-sm-2 col-xs-4 text-big">{{hsCtrl.getYears()}}</h1>
+									<h1 class=" col-sm-5 col-xs-4 glyphicon glyphicon-menu-right text-left pt4 clickable" ng-click="hsCtrl.setYears(1)" ng-class="{'not-visible':hsCtrl.getYears() == 5}"></h1>
+								</div>
+								<h3 ng-if="hsCtrl.getYears() == 1" class="row">anno fa</h3>
+								<h3 ng-if="hsCtrl.getYears() > 1" class="row">anni fa</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="fadingInRight undisplayed col-sm-6">
+			<div class="row sm-percRowHeight12">
+				<div class="col-sm-11 sm-percRowHeight12 pt4">
+					<div class="row sm-percRowHeight1">
+						<div class="btn-group col-sm-12 col-xs-12"  data-toggle="buttons">
+							<label class="btn btn-default-outline col-xs-6 col-sm-6" ng-click="hsCtrl.setStat('minutes_watched')" ng-class="{active:hsCtrl.getStat('minutes_watched')}">Minuti guardati</label>
+							<label class="btn btn-default-outline col-xs-6 col-sm-6" ng-click="hsCtrl.setStat('movies_watched')" ng-class="{active:hsCtrl.getStat('movies_watched')}">Film visti</label>
+						</div>
+					</div>
+					<div class="row sm-percRowHeight9" id="chart">
+						<div class="col-sm-12 sm-percRowHeight12 pt4">
+								<canvas id="bar" class="chart chart-bar sm-percRowHeight11" chart-colours= "hsCtrl.chartData.colours" chart-data="hsCtrl.chartData.dataset" chart-labels="hsCtrl.chartData.labels" chart-options="hsCtrl.chartData.options" >
+								</canvas>
+						</div>
+					</div>
+					<div class="row sm-percRowHeight1">
+						<div class="btn-group col-sm-12 col-xs-12"  data-toggle="buttons">
+							<label class="btn btn-default-outline col-xs-6 col-sm-6" ng-click="hsCtrl.setPeriod('months')" ng-class="{active:hsCtrl.getPeriod('months')}">Mesi</label>
+							<label class="btn btn-default-outline col-xs-6 col-sm-6" ng-click="hsCtrl.setPeriod('years')" ng-class="{active:hsCtrl.getPeriod('years')}">Anni</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="third-row" class="bgPrimaryH50 nopadding row pb3 sm-pxRowHeight6 textWhite">
+		<div class="col-sm-12 sm-pxRowHeight6 relative">
+			<div class="row sm-percRowHeight6 backgroundPresent">
+				<div class="col-sm-12 sm-percRowHeight12">
+					<div class="row sm-percRowHeight12 bgPrimaryTransparent">
+						<div class="col-md6 responsiveTitle pt5">IL TUO PRESENTE</div>
+					</div>
+				</div>
+			</div>
+			<div class="row sm-percRowHeight6 absolute" style="top:30%; width:100%;">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight12 ph1 textWhite clickable">
+								<div class="col-sm-12 text-center img-rounded tile fading relative">
+									<div class="row sm-percRowHeight10 backgroundLOTR">
+									</div>
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary pt1">
+										<h4>ULTIMO FILM VISTO</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight12 ph1 textWhite clickable">
+								<div class="col-sm-12 text-center img-rounded tile fading relative">
+									<div class="row sm-percRowHeight10 backgroundLOTR">
+									</div>
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary pt1">
+										<h4>ULTIMO FILM VOTATO</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight12 ph1 textWhite clickable">
+								<div class="col-sm-12 text-center img-rounded tile fading relative">
+									<div class="row sm-percRowHeight10 backgroundHarryPotter">
+									</div>
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary pt1">
+										<h4>UN FILM CHE VUOI VEDERE</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 pt1 pb1">
+							<div class="row sm-percRowHeight12 ph1 textWhite clickable">
+								<div class="col-sm-12 text-center img-rounded tile fading relative">
+									<div class="row sm-percRowHeight10 backgroundPulpFiction">
+									</div>
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary pt1">
+										<h4>NON L'HAI ANCORA VOTATO</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="FOURTH-row" class="bgPrimaryH50 nopadding row pb3 sm-pxRowHeight6 textWhite">
+		<div class="col-sm-12 sm-pxRowHeight6 relative">
+			<div class="row sm-percRowHeight4 backgroundFuture">
+				<div class="col-sm-12 sm-percRowHeight12">
+					<div class="row sm-percRowHeight12 bgPrimaryTransparent">
+						<div class="col-md6 responsiveTitle pt3">IL TUO FUTURO</div>
+					</div>
+				</div>
+			</div>
+			<div class="row sm-percRowHeight8">
+				<div class="col-sm-12">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="row sm-percRowHeight12 textDarkGrey clickable">
+								<div class="col-sm-12 text-center fading relative">
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary textWhite">
+										<h2>COSTRUISCILO</h2>
+									</div>
+									<div class="row sm-percRowHeight6">
+										<div class="text-massive glyphicon glyphicon-plus"></div>
+									</div>
+									<div class="row sm-percRowHeight2">
+										<h3>Aggiungi film alla watchlist</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="row sm-percRowHeight12 textDarkGrey clickable">
+								<div class="col-sm-12 text-center fading relative">
+									<div class="row sm-percRowHeight2 xs-percRowHeight2 bgPrimary textWhite">
+										<h2>ESPLORALO</h2>
+									</div>
+									<div class="row sm-percRowHeight10">
+										<h3>Ultime uscite</h3>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

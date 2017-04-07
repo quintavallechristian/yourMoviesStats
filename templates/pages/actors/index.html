@@ -1,0 +1,101 @@
+<div class="container-fluid nopadding roboto textDarkGrey">
+	<div id="first-row" class="row nopadding passHeader sm-pxRowHeight6">
+		<div class="col-sm-12">
+			<div class="row sm-percRowHeight1">
+				<div class="col-sm-6 sm-percRowHeight12 pt3">
+					<div class="row sm-percRowHeight1">
+					</div>
+				</div>
+				<div class="col-sm-6 sm-percRowHeight12 pt3">
+					<div class="row sm-percRowHeight1">
+					</div>
+				</div>
+			</div>
+			<div class="row sm-percRowHeight10">
+				<div class="col-sm-1 sm-percRowHeight11">
+					     <md-slider-container flex class="sm-percRowHeight12">
+							  <md-input-container class="sm-percRowHeight2">
+								<h3 class="textAccent">TOP</h3>
+								<input flex type="number" ng-model="asCtrl.limit" aria-label="bass" aria-controls="bass-slider">
+							  </md-input-container>
+							  <md-slider md-discrete ng-model="asCtrl.limit" ng-change="asCtrl.prova()" min="0" max="100" step="5" aria-label="bass" class="md-accent sm-percRowHeight8"
+										 md-vertical></md-slider>
+							  </md-slider>
+						</md-slider-container>
+				</div>
+				<div class="col-sm-5 sm-percRowHeight11">
+					<div class="col-sm-12 bgWhite tile sm-percRowHeight12">
+						<div class="row noscroll sm-percRowHeight2 pt1">
+							<div class=" col-sm-12 textDarkGrey sm-percRowHeight12">
+								<md-content class="pl1">
+										<md-input-container class="md-block md-accent">
+											<label>Cerca</label>
+											<input ng-model="query">
+										</md-input-container>
+								</md-content>
+							</div>
+						</div>
+						<div class="row textDarkGrey sm-percRowHeight8" style="overflow-y:scroll;">
+							<div class="col-sm-12 text-center pt1"  ng-hide="asCtrl.finished">
+								<md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>						
+							</div>
+							<md-list flex>
+								<md-list-item class="sm-percRowHeight2 md-3-line animate-repeat" ng-repeat="actor in asCtrl.data.actors | filter:query | orderBy: [asCtrl.orderingField, '-average'] | filter:asCtrl.greaterThan('appearence', 2)  | limitTo:asCtrl.limit" ng-click="null">
+								  <img ng-src="{{todos[1].face}}?50" class="md-avatar" alt="{{todos[1].who}}" />
+								  <div class="md-list-item-text pl2" layout="column">
+									<div class="row">
+										<h3>{{actor.name}}</h3>
+									</div>
+									<div class="row sm-percRowHeight4 textAccent">
+										<div class="col-sm-5">
+											<div class="star-container"><span ng-repeat="star in asCtrl.range(1,10)" class="glyphicon glyphicon-star-empty" class="textAccent"></span></div>
+											<div class="star-container"><div style="width:{{actor.average*10}}%; overflow:hidden;"><div class="star-content"><span ng-repeat="star in asCtrl.range(1,10)" class="glyphicon glyphicon-star" class="textAccent"></span></div></div></div>
+										</div>
+										<div class="col-sm-1 nopadding">
+											<i>{{actor.average | number:2}}</i>
+										</div>
+									</div>
+									<h3 class="md-secondary pr4">{{actor.appearence}}</h3>
+								  </div>
+								</md-list-item>
+							</md-list>
+						</div>
+						
+						<div class="row textDarkGrey sm-percRowHeight2 noscroll">
+							<md-toolbar layout="row" class="md-primary shadow sm-percRowHeight12 pt1">
+							  <div class="md-toolbar-tools">
+								<div class="col-sm-6 nopadding">Ordina per</div>
+								<div class="text-center col-sm-3 text-smaller" ng-class="{active:asCtrl.getOrderingField('average')}" ng-click="asCtrl.setOrderingField('average')">
+									Media voto
+										<div ng-show="asCtrl.getOrderingField('-average')" class="text-xsmall glyphicon glyphicon-menu-down"></div>
+										<div ng-show="asCtrl.getOrderingField('+average')" class="text-xsmall glyphicon glyphicon-menu-up"></div>
+								</div>
+								<div class="text-center col-sm-3 text-smaller" ng-class="{active:asCtrl.getOrderingField('appearence')}" ng-click="asCtrl.setOrderingField('appearence')">
+									Film visti
+										<div ng-show="asCtrl.getOrderingField('-appearence')" class="text-xsmall glyphicon glyphicon-menu-down"></div>
+										<div ng-show="asCtrl.getOrderingField('+appearence')" class="text-xsmall glyphicon glyphicon-menu-up"></div>
+								</div>
+							  </div>
+							</md-toolbar>
+						</div>
+						<md-button class="filter-fab md-fab" ng-click="fsCtrl.showFilters()">
+							<div class="glyphicon glyphicon-filter textWhite"></div>
+						</md-button>
+					</div>
+				</div>
+				<div class="fadingInRight undisplayed col-sm-6 pt3">
+					<div class="row sm-percRowHeight12">
+						<div class="row sm-percRowHeight11" id="chart">
+							<div class="col-sm-12 sm-percRowHeight12">
+								<canvas ng-show="asCtrl.getOrderingField('appearence')" id="pie" class="chart chart-pie sm-percRowHeight11" chart-colours= "asCtrl.chartData.colours" chart-data="asCtrl.chartData.dataset" chart-labels="asCtrl.chartData.labels" chart-options="hsCtrl.chartData.options" >
+								</canvas>
+								<canvas ng-show="asCtrl.getOrderingField('average')" id="polar-area" class="chart chart-polar-area sm-percRowHeight11" chart-colours= "asCtrl.chartData.colours" chart-data="asCtrl.chartData.dataset" chart-labels="asCtrl.chartData.labels" chart-options="asCtrl.chartData.options" >
+								</canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
