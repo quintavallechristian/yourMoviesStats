@@ -1,8 +1,0 @@
-TABELLA PER ATTORI
-
-<div class="column ven">
-	<div id="actor-most-film" class="selected unselected" >Attori dei quali hai visto pi&ugrave; film</div>
-	<div id="actor-most-animated-film" class="unselected" >Attori dei quali hai visto pi&ugrave; film d'animazione</div>
-	<div id="actor-highest-rated-film" class="unselected" >Attori con la maggior media voto</div>
-	<div id="actor-hdfighest-rated-film" class="unselected">Attori che hanno partecipato ai tuoi film preferiti</div>
-</div>
